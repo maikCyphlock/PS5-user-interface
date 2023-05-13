@@ -1,11 +1,18 @@
 <script>
 	import Navbar from '$lib/navbar.svelte';
 	import GameSelector from '$lib/game-selector.svelte';
+
+	let parentProperty = '';
+
+	function handleUpdateProperty(event) {
+		parentProperty = event.detail.value;
+		console.log(parentProperty);
+	}
 </script>
 
 <main class="relative">
 	<Navbar />
-	<GameSelector />
+	<GameSelector on:updateProperty={handleUpdateProperty} />
 	<img
 		src="https://image.api.playstation.com/vulcan/img/rnd/202010/2417/tnCutdREPv6Pa7atqb8MTxGW.png"
 		class="bg"
