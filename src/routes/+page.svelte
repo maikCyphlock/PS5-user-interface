@@ -1,23 +1,24 @@
 <script>
 	import Navbar from '$lib/navbar.svelte';
 	import GameSelector from '$lib/game-selector.svelte';
-
+	import GameList from '$lib/gameList.js';
+	let url;
 	let parentProperty = '';
 
 	function handleUpdateProperty(event) {
 		parentProperty = event.detail.value;
-		console.log(parentProperty);
+		url = GameList[parentProperty].urlBanner;
+
+		console.log();
 	}
 </script>
 
 <main class="relative">
 	<Navbar />
 	<GameSelector on:updateProperty={handleUpdateProperty} />
-	<img
-		src="https://image.api.playstation.com/vulcan/img/rnd/202010/2417/tnCutdREPv6Pa7atqb8MTxGW.png"
-		class="bg"
-		alt=""
-	/>
+	<div class="container">
+		<img src={url} class="bg" alt="" />
+	</div>
 </main>
 
 <style>
@@ -27,13 +28,15 @@
 		min-height: 100vh;
 		min-width: 100vw;
 	}
+
 	.bg {
+		filter: brightness(0.6);
 		position: absolute;
 		height: 100%;
 		width: 100%;
 		top: 0;
-		z-index: -1;
-		filter: brightness(0.8);
+		z-index: -2;
+
 		object-fit: cover;
 	}
 	:global(body) {

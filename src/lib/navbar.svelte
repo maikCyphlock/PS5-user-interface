@@ -24,7 +24,7 @@
 	nav {
 		display: flex;
 		gap: 1rem;
-
+		z-index: 1;
 		justify-content: space-around;
 		align-items: center;
 		min-height: 50px;
